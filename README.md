@@ -11,7 +11,6 @@ every 1.75 seconds.
 
 ```py
 from throttle import DebouncedTask, ThrottledTask
-from sys import exit
 
 
 button = ...
