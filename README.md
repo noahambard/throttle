@@ -4,7 +4,7 @@ Contains utility classes for tasks which can be run at some interval.
 
 Written by Noah Emmanuel Ambard
 
-## Example program
+## Example 1
 
 Debounces a button to correct for any input noise and continuously blinks an LED
 every 1.75 seconds.
@@ -31,4 +31,25 @@ while True:
     
     # Blink LED every 1.75 seconds
     blinkTask.run_if_ready()
+```
+
+## Example 2
+
+Manages many unrelated throttled tasks at once.
+
+```py
+from throttle import ThrottledTask
+
+
+...
+
+# Define all throttled tasks here. Tasks can be added or removed afterwards
+tasks = [ThrottledTask(1, deviceOnLED.toggle),
+         ThrottledTask(5, buzzer.beep(length=1)), ...]
+
+
+while True:
+    # Handle throttled tasks
+    for task in tasks:
+        task.run_if_ready()
 ```
